@@ -611,14 +611,6 @@ function showFinalMessage() {
             "final-message"
         );
 
-                setTimeout(() => {
-
-            const photo =
-                document.getElementById("photo-container");
-
-            photo.classList.add("show");
-
-        }, 3500);
 
         /*
            Make every star glow stronger
