@@ -1,0 +1,513 @@
+/* ========================================
+   RESET
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #18213b 0%,
+            #0d1428 35%,
+            #050817 70%,
+            #02030a 100%
+        );
+
+    color: #fff;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+}
+
+
+/* ========================================
+   MAIN SCREEN
+======================================== */
+
+#screen {
+
+    width: 100vw;
+    height: 100vh;
+
+    position: relative;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ========================================
+   BACKGROUND STAR DUST
+======================================== */
+
+#screen::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+
+        radial-gradient(
+            circle,
+            rgba(255,255,255,0.45) 1px,
+            transparent 1px
+        ),
+
+        radial-gradient(
+            circle,
+            rgba(255,240,170,0.3) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        140px 140px,
+        220px 220px;
+
+    background-position:
+        30px 20px,
+        100px 80px;
+
+    opacity: 0.25;
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   CONTENT
+======================================== */
+
+#content {
+
+    position: relative;
+
+    z-index: 50;
+
+    width: min(720px, 82%);
+
+    text-align: center;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+
+#title {
+
+    font-size:
+        clamp(28px, 5vw, 56px);
+
+    font-weight: 400;
+
+    letter-spacing: 1.5px;
+
+    line-height: 1.3;
+
+    color: #fff;
+
+    text-shadow:
+        0 0 18px rgba(255, 235, 160, 0.2);
+}
+
+
+#subtitle {
+
+    margin-top: 18px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    opacity: 0.55;
+
+    line-height: 1.7;
+}
+
+
+/* ========================================
+   TEXT ANIMATION
+======================================== */
+
+.fade-out {
+
+    opacity: 0;
+
+    transform:
+        translateY(-10px);
+
+}
+
+
+/* ========================================
+   STAR
+======================================== */
+
+.star {
+
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #fff0a6;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 10;
+
+    box-shadow:
+
+        0 0 5px #fff0a6,
+
+        0 0 12px rgba(255, 232, 125, 0.8),
+
+        0 0 25px rgba(255, 220, 100, 0.45);
+}
+
+
+/* ========================================
+   STAR CROSS LIGHT
+======================================== */
+
+.star::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 1px;
+    height: 28px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        rgba(255, 240, 170, 0.75);
+
+    border-radius: 50%;
+}
+
+
+.star::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 28px;
+    height: 1px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        rgba(255, 240, 170, 0.75);
+
+    border-radius: 50%;
+}
+
+
+/* ========================================
+   STAR APPEAR
+======================================== */
+
+.star.appear {
+
+    animation:
+        appearStar 1s
+        cubic-bezier(.2, .8, .2, 1)
+        forwards;
+}
+
+
+@keyframes appearStar {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0);
+
+        filter: blur(5px);
+    }
+
+    40% {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.8);
+
+        filter: blur(0);
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+}
+
+
+/* ========================================
+   STAR MOVING INTO FORMATION
+======================================== */
+
+.star.forming {
+
+    animation:
+        formGlow 2.5s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes formGlow {
+
+    0% {
+
+        box-shadow:
+
+            0 0 5px #fff0a6,
+
+            0 0 12px rgba(255, 232, 125, 0.7),
+
+            0 0 25px rgba(255, 220, 100, 0.35);
+    }
+
+    50% {
+
+        box-shadow:
+
+            0 0 8px #fff7c5,
+
+            0 0 25px #ffe98a,
+
+            0 0 55px rgba(255, 220, 100, 0.6);
+    }
+
+    100% {
+
+        box-shadow:
+
+            0 0 5px #fff0a6,
+
+            0 0 12px rgba(255, 232, 125, 0.7),
+
+            0 0 25px rgba(255, 220, 100, 0.35);
+    }
+}
+
+
+/* ========================================
+   FINAL GIANT STAR GLOW
+======================================== */
+
+.final-star {
+
+    animation:
+        giantGlow 3s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes giantGlow {
+
+    0% {
+
+        filter:
+            brightness(1);
+
+    }
+
+    50% {
+
+        filter:
+            brightness(1.8);
+
+    }
+
+    100% {
+
+        filter:
+            brightness(1);
+
+    }
+}
+
+
+/* ========================================
+   FINAL TEXT
+======================================== */
+
+.final-message {
+
+    text-shadow:
+
+        0 0 15px rgba(255, 240, 170, 0.25),
+
+        0 0 35px rgba(255, 220, 100, 0.15);
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    #title {
+
+        font-size: 31px;
+
+    }
+
+    #subtitle {
+
+        font-size: 10px;
+
+    }
+
+    .star {
+
+        width: 6px;
+        height: 6px;
+
+    }
+
+    .star::before {
+
+        height: 22px;
+
+    }
+
+    .star::after {
+
+        width: 22px;
+
+    }
+
+}
+
+/* ========================================
+   FINAL PHOTO
+======================================== */
+
+#photo-container {
+    position: fixed;
+    z-index: 100;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.88);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s cubic-bezier(.2, .8, .2, 1);
+
+    pointer-events: none;
+}
+
+#photo-container.show {
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+}
+
+#photo-container img {
+    width: min(330px, 72vw);
+    max-height: 430px;
+
+    object-fit: cover;
+
+    border-radius: 6px;
+
+    border: 1px solid rgba(255, 240, 170, 0.35);
+
+    box-shadow:
+        0 0 15px rgba(255, 240, 170, 0.18),
+        0 0 35px rgba(255, 220, 100, 0.12),
+        0 0 70px rgba(255, 220, 100, 0.06);
+}
+
+#photo-container p {
+    margin-top: 17px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 14px;
+    font-style: italic;
+
+    color: rgba(255, 245, 210, 0.65);
+
+    letter-spacing: 0.5px;
+}
